@@ -35,6 +35,7 @@ module.exports = async function handler(req, res) {
 You help students with robot design (CAD), programming (Java, FTC SDK), match strategy, and official FTC rules.
 Always answer in ${responseLanguage}, unless the user's message is clearly written in a different language — in that case, reply in the language the user used.
 Be clear, encouraging, and specific. Prefer concrete steps and examples over vague advice. Keep answers focused — a few short paragraphs or a short list is usually enough.
+This chat displays plain text only — never use Markdown syntax (no **bold**, no #headers, no bullet symbols like * or -). Write in plain sentences, and for lists use simple numbered lines like "1) ..." on their own line.
 If a question is unrelated to FTC/robotics/engineering, you can still help, but gently steer back toward how it might relate to their robotics work when relevant.`;
 
   try {
@@ -51,7 +52,10 @@ If a question is unrelated to FTC/robotics/engineering, you can still help, but 
           contents: [
             { role: 'user', parts: [{ text: message.trim() }] }
           ],
-          generationConfig: { maxOutputTokens: 600 }
+          generationConfig: {
+            maxOutputTokens: 1024,
+            thinkingConfig: { thinkingBudget: 0 }
+          }
         })
       }
     );
@@ -64,7 +68,12 @@ If a question is unrelated to FTC/robotics/engineering, you can still help, but 
     }
 
     const data = await response.json();
-    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text
+    const parts = data?.candidates?.[0]?.content?.parts || [];
+    const reply = parts
+      .filter(p => !p.thought && p.text)
+      .map(p => p.text)
+      .join('')
+      .trim()
       || 'Кешіріңіз, жауап ала алмадым. Қайталап көріңізші.';
 
     res.status(200).json({ reply });
