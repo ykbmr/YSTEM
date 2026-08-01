@@ -540,7 +540,7 @@ async function sendToAI(userText){
 
     if(!res.ok){
       console.error('AI mentor backend error:', res.status, data);
-      const detail = (data && data.error) ? data.error : ('HTTP ' + res.status);
+      const detail = (data && (data.detail || data.error)) ? (data.detail || data.error) : ('HTTP ' + res.status);
       const fallback = {
         kk:'AI серверден қате келді: ' + detail,
         ru:'Ошибка от AI сервера: ' + detail,
