@@ -178,11 +178,52 @@ section.active{ display:block; }
 footer{ border-top:1px solid var(--border); padding:28px 0; text-align:center; color:var(--text-dim); font-size:13px; }
 
 @media(max-width:760px){
-  nav{ display:none; flex-direction:column; position:absolute; top:64px; left:0; right:0; background:var(--bg-panel); border-bottom:1px solid var(--border); padding:10px; }
+  .container{ padding:0 16px; }
+  nav{ display:none; flex-direction:column; position:absolute; top:64px; left:0; right:0; background:var(--bg-panel); border-bottom:1px solid var(--border); padding:10px; z-index:60; }
   nav.open{ display:flex; }
+  nav button{ padding:12px 14px; text-align:left; font-size:15px; }
   .menu-toggle{ display:block; }
-  .hero .display{ font-size:36px; }
+  .header-inner{ padding:12px 0; }
+  .brand img{ height:36px; width:36px; }
+  .brand-text .name{ font-size:17px; }
+  .brand-text .num{ font-size:11px; }
+  .lang-switch button{ padding:6px 9px; font-size:11px; }
+
+  section{ padding:36px 0; }
+  .hero{ padding:36px 0 24px; }
+  .hero .display{ font-size:34px; }
+  .hero .sub{ font-size:14px; }
+  .hero .tag{ font-size:11px; letter-spacing:0.08em; }
+  .hero-logo{ width:120px; height:120px; margin-top:20px; }
+
+  .panel{ padding:20px; margin-top:20px; }
+  .panel h2{ font-size:20px; }
+
   .grid-2, .res-grid, .feature-grid, .about-grid{ grid-template-columns:1fr; }
+
+  .mentor-card{ padding:18px; }
+  .mentor-name{ font-size:18px; }
+  .mentor-avatar{ width:48px; height:48px; font-size:16px; }
+
+  .modal-overlay{ padding:12px; align-items:flex-end; }
+  .modal-box{ padding:22px; max-height:85vh; border-radius:16px 16px 0 0; }
+  .modal-close{ width:36px; height:36px; font-size:18px; }
+  .modal-box h2{ font-size:20px; }
+
+  .chat-log{ height:55vh; min-height:280px; max-height:440px; padding:16px; }
+  .msg{ max-width:88%; font-size:13px; }
+  .chat-input-row{ padding:12px; }
+  .chat-input-row input{ font-size:16px; padding:12px 14px; } /* 16px avoids iOS zoom-on-focus */
+  .chat-input-row button{ padding:0 16px; font-size:14px; }
+
+  .res-card{ padding:18px; }
+}
+
+@media(max-width:400px){
+  .hero .display{ font-size:28px; }
+  .hero-logo{ width:100px; height:100px; }
+  .brand-text .num{ display:none; }
+  .lang-switch button{ padding:5px 7px; }
 }
 </style>
 </head>
@@ -292,6 +333,7 @@ const translations = {
       {label:'Жоба', value:'YSTEM'},
       {label:'Оқу орны', value:'Есік Білім Инновация лицейі'},
       {label:'Бағдарлама', value:'FIRST Tech Challenge'},
+      {label:'Бағдарлама', value:'FIRST LEGO League Challenge'},
       {label:'Бағыт', value:'Робототехника · CAD · Программалау · Менторлық'}
     ],
     mentors_eyebrow:'Команда',
@@ -316,7 +358,7 @@ const translations = {
       Shyngys:'Команданың бас программисі. Java және FTC SDK негізінде автономды режимдер мен басқару жүйелерін жазады.',
       Kemenger:'Инспайр бағытының жетекшісі және команда капитаны. Инженерлік дәптер, презентация және қоғаммен байланыс (outreach) жұмыстарын үйлестіреді.',
       Ali:'Инженерлік бөлімнің маманы. Роботтың механикалық құрылымы, прототиптеу және тест сынақтарына жауап береді.',
-      Miras:'FLL бағытында Project Mentor. Инновациялық жоба (Innovation Project) бойынша командаларды зерттеу, презентация және шешім ұсыну кезеңдерінде бағыттайды.',
+      Miras:'FLL бағытында Project Mentor. Инновациялық жоба (Innovation Project) бойынша командаларды зерттеу, презентация және шешім ұсыну кезеңдерінде бағыттайды. Сондай-ақ Core Values (Discovery, Innovation, Impact, Inclusion, Teamwork, Fun) принциптерін түсіндіріп, командаларды соған үйретеді.',
       Yernur:'FLL бағытында Программалау Ментор. LEGO Spike/EV3 негізінде Robot Game үшін код жазу мен автономды миссияларды үйретеді.',
       Alinur:'FLL бағытында инженер-ментор. Робот құрастыру, механизм дизайны және missions-ты орындауға арналған қондырғыларды жетілдіруге көмектеседі.'
     },
@@ -347,6 +389,7 @@ const translations = {
       {label:'Проект', value:'YSTEM'},
       {label:'Учебное заведение', value:'Лицей «Есік Білім Инновация»'},
       {label:'Программа', value:'FIRST Tech Challenge'},
+      {label:'Программа', value:'FIRST LEGO League Challenge'},
       {label:'Направления', value:'Робототехника · CAD · Программирование · Менторство'}
     ],
     mentors_eyebrow:'Команда',
@@ -371,7 +414,7 @@ const translations = {
       Shyngys:'Главный программист команды. Пишет автономные режимы и системы управления на Java с использованием FTC SDK.',
       Kemenger:'Руководитель направления Inspire и капитан команды. Координирует ведение инженерного блокнота, презентации и работу с сообществом (outreach).',
       Ali:'Специалист инженерного отдела. Отвечает за механическую конструкцию робота, прототипирование и тестовые испытания.',
-      Miras:'Project Mentor направления FLL. Направляет команды на этапах исследования, презентации и разработки решения в рамках Innovation Project.',
+      Miras:'Project Mentor направления FLL. Направляет команды на этапах исследования, презентации и разработки решения в рамках Innovation Project. Также объясняет и обучает командным ценностям Core Values (Discovery, Innovation, Impact, Inclusion, Teamwork, Fun).',
       Yernur:'Ментор по программированию направления FLL. Учит писать код для Robot Game и автономных миссий на базе LEGO Spike/EV3.',
       Alinur:'Инженер-ментор направления FLL. Помогает со сборкой робота, дизайном механизмов и доработкой насадок для выполнения миссий.'
     },
@@ -402,6 +445,7 @@ const translations = {
       {label:'Project', value:'YSTEM'},
       {label:'School', value:'Esik Bilim Innovation Lyceum'},
       {label:'Program', value:'FIRST Tech Challenge'},
+      {label:'Program', value:'FIRST LEGO League Challenge'},
       {label:'Focus areas', value:'Robotics · CAD · Programming · Mentoring'}
     ],
     mentors_eyebrow:'Team',
@@ -426,7 +470,7 @@ const translations = {
       Shyngys:"The team's lead programmer. Writes autonomous routines and control systems in Java using the FTC SDK.",
       Kemenger:'Leads the Inspire direction and captains the team. Coordinates the engineering notebook, presentations, and community outreach work.',
       Ali:'Engineering department specialist. Responsible for the robot mechanical structure, prototyping, and test runs.',
-      Miras:'FLL Project Mentor. Guides teams through the research, presentation, and solution-design stages of the Innovation Project.',
+      Miras:'FLL Project Mentor. Guides teams through the research, presentation, and solution-design stages of the Innovation Project. Also teaches and explains the Core Values (Discovery, Innovation, Impact, Inclusion, Teamwork, Fun).',
       Yernur:'FLL Programming Mentor. Teaches Robot Game coding and autonomous missions using LEGO Spike/EV3.',
       Alinur:'FLL Engineering Mentor. Helps with robot building, mechanism design, and attachment development for completing missions.'
     },
@@ -452,9 +496,9 @@ const mentors = [
   { name:'Shyngys', roleKey:'role_prog', tg:'Thefrosti', photo:'assets/China.png' },
   { name:'Kemenger', roleKey:'role_inspire', tg:'kema73', photo:'assets/kema.png' },
   { name:'Ali', roleKey:'role_eng', tg:'rarree_21', photo:'assets/Ali.png' },
-  { name:'Miras', roleKey:'role_fll_project', tg:'Yerkinbek_Miras', photo:null },
-  { name:'Yernur', roleKey:'role_fll_prog', tg:'s1leeeem', photo:null },
-  { name:'Alinur', roleKey:'role_fll_eng', tg:'alinururur', photo:null }
+  { name:'Miras', roleKey:'role_fll_project', tg:'Yerkinbek_Miras', photo:'assets/Miras.png' },
+  { name:'Yernur', roleKey:'role_fll_prog', tg:'s1leeeem', photo:'assets/Yernur.png' },
+  { name:'Alinur', roleKey:'role_fll_eng', tg:'alinururur', photo:'assets/Alinur.png' }
 ];
 
 let currentLang = 'kk';
