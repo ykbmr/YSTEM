@@ -1,4 +1,4 @@
-# YSTEM | Y-TECH #29112
+# Y-TECH | YSTEM #29112
 
 Official website for **Y-TECH**, a FIRST Tech Challenge (FTC) robotics team (project name **YSTEM**, team #29112), built by students of Esik Bilim Innovation Lyceum, Kazakhstan.
 
@@ -71,6 +71,10 @@ For a detailed step-by-step walkthrough (in Kazakh), see [DEPLOYMENT.md](./DEPLO
 | Programmer | Shyngys | [@Thefrosti](https://t.me/Thefrosti) |
 | Inspire / Captain | Kemenger | [@kema73](https://t.me/kema73) |
 | Engineer | Ali | [@rarree_21](https://t.me/rarree_21) |
+
+## About the Developer
+
+**Yerkinbek Miras** — Inspire team member at Y-TECH, and the developer of this website (frontend, backend, and AI integration). Built as a personal initiative to strengthen his own research and hands-on development experience — from UI design and multilingual support to deploying a working AI-powered backend in production.
 
 ## About FTC
 
