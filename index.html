@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YSTEM | Y-TECH #29112</title>
+<title>Y-TECH | YSTEM #29112</title>
+<meta name="description" content="Y-TECH — YSTEM жобасы, FTC (FIRST Tech Challenge) робототехника командасы #29112, Есік Білім Инновация лицейі. Менторлар, AI Ментор және оқу материалдары.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -117,7 +118,7 @@ section.active{ display:block; }
 }
 .tg-btn:hover{ background:var(--maroon-light); }
 
-.feature-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:32px; }
+.feature-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-top:32px; }
 .feature-card{ background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px; }
 .feature-card .num{ font-family:'JetBrains Mono'; font-size:12px; color:var(--gold); margin-bottom:8px; }
 .feature-card h3{ font-size:16px; color:var(--gold-bright); margin-bottom:6px; }
@@ -285,7 +286,7 @@ const translations = {
     welcome_title:'Қош келдіңіз, Y-TECH!',
     welcome_text:'Біз FIRST Tech Challenge аясында инновациялық роботтар құрастыратын және инженерлік дағдыларды дамытатын командамыз. Сайтымызда командамыздың менторларымен байланысуға, AI ментордан кеңес алуға және пайдалы материалдарды табуға болады.',
     about_title:'Команда туралы',
-    about_text:'Y-TECH — FIRST Tech Challenge бағдарламасына қатысатын жас инженерлер мен программистерден құралған #29112 нөмірлі командамыз. Біз Есік Білім Инновация лицейінен шыққан оқушылармыз. YSTEM жобасы аясында біз тек өз роботымызды жасаумен шектелмей, басқа жаңадан бастаған командаларға CAD, программалау және стратегия бойынша тегін менторлық ұсынамыз. Мақсатымыз — робототехника арқылы STEM білімін дамыту және Қазақстандағы FTC қауымдастығын кеңейту.',
+    about_text:'Y-TECH — FIRST Tech Challenge бағдарламасына қатысатын жас инженерлер мен программистерден құралған #29112 нөмірлі командамыз. Біз Есік Білім Инновация лицейінен шыққан оқушылармыз. YSTEM жобасы аясында біз тек өз роботымызды жасаумен шектелмей, басқа жаңадан бастаған командаларға CAD, программалау және стратегия бойынша тегін менторлық ұсынамыз. Сонымен қатар FIRST LEGO League (FLL) бағыты бойынша да менторлық ұсынамыз — Innovation Project және Robot Game бөлімдерінде. Мақсатымыз — робототехника арқылы STEM білімін дамыту және Қазақстандағы FTC/FLL қауымдастығын кеңейту.',
     about_stats:[
       {label:'Команда', value:'Y-TECH #29112'},
       {label:'Жоба', value:'YSTEM'},
@@ -295,24 +296,29 @@ const translations = {
     ],
     mentors_eyebrow:'Команда',
     ai_eyebrow:'AI Ассистент',
-    ai_desc:'FTC бойынша кез келген сұрағыңызды қойыңыз — робот дизайны, программалау, стратегия немесе ережелер.',
+    ai_desc:'FTC және FLL бойынша кез келген сұрағыңызды қойыңыз — робот дизайны, программалау, стратегия, Innovation Project немесе ережелер.',
     ai_placeholder:'Сұрағыңызды жазыңыз...', ai_send:'Жібер',
-    ai_greeting:'Сәлем! Мен Y-TECH командасының AI менторымын. FTC-ге қатысты кез келген сұрақ қойыңыз.',
+    ai_greeting:'Сәлем! Мен Y-TECH командасының AI менторымын. FTC және FLL-ге қатысты кез келген сұрақ қойыңыз.',
     ai_typing:'Ойланып жатыр',
     res_eyebrow:'Оқу материалдары',
     res_click:'Толығырақ →',
     role_cader:'Кадер · CAD', role_prog:'Программист', role_inspire:'Инспайр/Капитан', role_eng:'Инженер',
+    role_fll_project:'FLL Project · Ментор', role_fll_prog:'FLL Программалау · Ментор', role_fll_eng:'FLL Инженер',
     tg:'Telegram',
     features: [
       {num:'01', title:'Роботты құрастыру', text:'CAD дизайн, 3D баспа, механикалық прототиптеу'},
       {num:'02', title:'Программалау', text:'Java негізінде автономды және телеоперативті режим'},
-      {num:'03', title:'Ментор желісі', text:'Басқа командаларға CAD, код және стратегия үйретеміз'}
+      {num:'03', title:'Ментор желісі', text:'Басқа командаларға CAD, код және стратегия үйретеміз'},
+      {num:'04', title:'FLL бағыты', text:'FIRST LEGO League: Innovation Project, Robot Game және Core Values'}
     ],
     bios: {
       Rasul:'CAD бойынша тәжірибелі ментор. Fusion 360 және Onshape-те 3D модельдеу, механикалық құрастыру принциптерін меңгерген және оны басқа командаларға үйретеді.',
       Shyngys:'Команданың бас программисі. Java және FTC SDK негізінде автономды режимдер мен басқару жүйелерін жазады.',
       Kemenger:'Инспайр бағытының жетекшісі және команда капитаны. Инженерлік дәптер, презентация және қоғаммен байланыс (outreach) жұмыстарын үйлестіреді.',
-      Ali:'Инженерлік бөлімнің маманы. Роботтың механикалық құрылымы, прототиптеу және тест сынақтарына жауап береді.'
+      Ali:'Инженерлік бөлімнің маманы. Роботтың механикалық құрылымы, прототиптеу және тест сынақтарына жауап береді.',
+      Miras:'FLL бағытында Project Mentor. Инновациялық жоба (Innovation Project) бойынша командаларды зерттеу, презентация және шешім ұсыну кезеңдерінде бағыттайды.',
+      Yernur:'FLL бағытында Программалау Ментор. LEGO Spike/EV3 негізінде Robot Game үшін код жазу мен автономды миссияларды үйретеді.',
+      Alinur:'FLL бағытында инженер-ментор. Робот құрастыру, механизм дизайны және missions-ты орындауға арналған қондырғыларды жетілдіруге көмектеседі.'
     },
     res: [
       {title:'Робот дизайны', desc:'CAD модельдеу, механика, құрастыру принциптері', tag:'CAD / Design',
@@ -322,7 +328,11 @@ const translations = {
       {title:'Стратегия', desc:'Жарыс стратегиясы, альянс таңдау, тактика', tag:'Strategy',
        full:'Жарыс стратегиясы — робот жасау сияқты маңызды бөлік. Негізгі элементтер:\n\n• Ойын анализі — әр тапсырманың ұпай құнын білу және командаға қай тапсырмалар тиімді екенін анықтау.\n\n• Альянс таңдау (Alliance Selection) — плей-офф кезінде серіктес команданы таңдағанда, өз әлсіз жақтарыңды толықтыратын команданы іздеу маңызды.\n\n• Scouting — басқа командалардың робот мүмкіндіктерін бақылап, деректер жинау, сол арқылы альянс құру кезінде дұрыс шешім қабылдау.\n\n• Матч ішіндегі коммуникация — драйверлер мен коуч арасында нақты, қысқа командалар қолдану (мысалы, радио арқылы емес, алдын ала келісілген белгілер).\n\n• Тәуекелді басқару — қауіпті әрекеттен бас тартып, тұрақты ұпай жинауды таңдау көбіне ұтымды болады.\n\nЖақсы стратегия — робот мүмкіндігі мен команданың ойын түсінігінің тоғысуы.'},
       {title:'Ережелер мен байқау', desc:'FTC ресми ережелері, сертификация, инспекция', tag:'Rules',
-       full:'Әр жарысқа қатысар алдында робот міндетті түрде техникалық инспекциядан (Robot Inspection) өтеді. Негізгі талаптар:\n\n• Өлшем және салмақ шектеулері — робот старт кезінде белгіленген көлем шеңберіне сыюы керек.\n\n• Қауіпсіздік — өткір бұрыштар, ашық сым, қуат көзінің дұрыс бекітілуі тексеріледі.\n\n• Батарея мен электрлік жүйе — тек рұқсат етілген батареялар мен контроллерлер (Control Hub/Expansion Hub) қолданылуы керек.\n\n• Software сертификациясы — командада бекітілген FTC SDK нұсқасы қолданылуы тиіс.\n\nСонымен қатар FTC жарыстарында Judging бөлімі бар — мұнда команданың Engineering Notebook-ы, Inspire марапатына үміткерлігі және командалық құндылықтары бағаланады. Ресми ереже кітапшасын (Game Manual Part 1 және 2) әр маусым басында мұқият оқып шығу міндетті.'}
+       full:'Әр жарысқа қатысар алдында робот міндетті түрде техникалық инспекциядан (Robot Inspection) өтеді. Негізгі талаптар:\n\n• Өлшем және салмақ шектеулері — робот старт кезінде белгіленген көлем шеңберіне сыюы керек.\n\n• Қауіпсіздік — өткір бұрыштар, ашық сым, қуат көзінің дұрыс бекітілуі тексеріледі.\n\n• Батарея мен электрлік жүйе — тек рұқсат етілген батареялар мен контроллерлер (Control Hub/Expansion Hub) қолданылуы керек.\n\n• Software сертификациясы — командада бекітілген FTC SDK нұсқасы қолданылуы тиіс.\n\nСонымен қатар FTC жарыстарында Judging бөлімі бар — мұнда команданың Engineering Notebook-ы, Inspire марапатына үміткерлігі және командалық құндылықтары бағаланады. Ресми ереже кітапшасын (Game Manual Part 1 және 2) әр маусым басында мұқият оқып шығу міндетті.'},
+      {title:'FLL: Innovation Project', desc:'Зерттеу, шешім ұсыну, презентация', tag:'FLL',
+       full:'FIRST LEGO League-тегі Innovation Project — команданың нақты өмірлік мәселені тауып, ғылыми негізде шешім ұсынатын бөлімі. Кезеңдері:\n\n1. Мәселені анықтау — маусымдық тақырыпқа сай (мысалы, көлік, ойлап табу, тағам жеткізу) нақты, жеке команданың айналасындағы мәселені таңдау.\n\n2. Зерттеу — мамандармен сұхбат, ғылыми дереккөздер, қолданыстағы шешімдерді талдау.\n\n3. Шешім ойлап табу — жаңашыл, іске асырылатын идея ұсыну, прототип жасау.\n\n4. Презентация — судьяларға 5 минуттық көрсетілім, шығармашылық пен командалық жұмысты көрсету маңызды.\n\n5. Core Values — Discovery, Innovation, Impact, Inclusion, Teamwork, Fun принциптерін сақтау бүкіл процесс бойы бағаланады.'},
+      {title:'FLL: Robot Game', desc:'LEGO Spike/EV3, миссиялар, ұпай жинау', tag:'FLL',
+       full:'Robot Game — FLL-дегі роботтық жарыс бөлігі, LEGO Spike Prime немесе EV3 негізінде өтеді. Негізгі түсініктер:\n\n• Миссиялар (Missions) — алаңда орналасқан тапсырмалар, әрқайсысы белгілі ұпай береді.\n\n• Автономды режим — робот 2.5 минуттық матч ішінде адам араласуынсыз бірнеше миссияны кезекпен орындайды.\n\n• Насадкалар (Attachments) — әр миссияға арналған қосымша механизмдер жасау — жобалау дағдысының маңызды бөлігі.\n\n• Дәлдік пен қайталанғыштық — сенсорларды (түс, гироскоп) дұрыс калибрлеу арқылы роботтың әр жүгіруде бірдей нәтиже беруін қамтамасыз ету.\n\nЖаңадан бастаушыларға кеңес: бірден күрделі миссияға кірмей, қарапайым қозғалыс пен бір-екі миссиядан бастап, біртіндеп күрделендіру тиімді.'}
     ]
   },
   ru: {
@@ -331,7 +341,7 @@ const translations = {
     welcome_title:'Добро пожаловать, Y-TECH!',
     welcome_text:'Мы команда, увлечённая созданием инновационных роботов и развитием инженерных навыков в рамках FIRST Tech Challenge. На сайте вы можете связаться с менторами команды, получить совет от AI ментора и найти полезные материалы.',
     about_title:'О команде',
-    about_text:'Y-TECH — команда #29112, состоящая из молодых инженеров и программистов, участвующих в FIRST Tech Challenge. Мы учащиеся лицея «Есік Білім Инновация». В рамках проекта YSTEM мы не только строим собственного робота, но и бесплатно обучаем другие начинающие команды CAD, программированию и стратегии. Наша цель — развитие STEM-образования через робототехнику и расширение сообщества FTC в Казахстане.',
+    about_text:'Y-TECH — команда #29112, состоящая из молодых инженеров и программистов, участвующих в FIRST Tech Challenge. Мы учащиеся лицея «Есік Білім Инновация». В рамках проекта YSTEM мы не только строим собственного робота, но и бесплатно обучаем другие начинающие команды CAD, программированию и стратегии. Также мы предлагаем менторство по направлению FIRST LEGO League (FLL) — в разделах Innovation Project и Robot Game. Наша цель — развитие STEM-образования через робототехнику и расширение сообщества FTC/FLL в Казахстане.',
     about_stats:[
       {label:'Команда', value:'Y-TECH #29112'},
       {label:'Проект', value:'YSTEM'},
@@ -341,24 +351,29 @@ const translations = {
     ],
     mentors_eyebrow:'Команда',
     ai_eyebrow:'AI Ассистент',
-    ai_desc:'Задайте любой вопрос по FTC — дизайн робота, программирование, стратегия или правила.',
+    ai_desc:'Задайте любой вопрос по FTC и FLL — дизайн робота, программирование, стратегия, Innovation Project или правила.',
     ai_placeholder:'Напишите вопрос...', ai_send:'Отправить',
-    ai_greeting:'Привет! Я AI ментор команды Y-TECH. Задавайте любые вопросы по FTC.',
+    ai_greeting:'Привет! Я AI ментор команды Y-TECH. Задавайте любые вопросы по FTC и FLL.',
     ai_typing:'Печатает',
     res_eyebrow:'Учебные материалы',
     res_click:'Подробнее →',
     role_cader:'Кадер · CAD', role_prog:'Программист', role_inspire:'Инспайр/Капитан', role_eng:'Инженер',
+    role_fll_project:'FLL Project · Ментор', role_fll_prog:'FLL Программирование · Ментор', role_fll_eng:'FLL Инженер',
     tg:'Telegram',
     features: [
       {num:'01', title:'Сборка робота', text:'CAD дизайн, 3D печать, механическое прототипирование'},
       {num:'02', title:'Программирование', text:'Автономный и теле-операционный режим на Java'},
-      {num:'03', title:'Сеть менторов', text:'Обучаем другие команды CAD, коду и стратегии'}
+      {num:'03', title:'Сеть менторов', text:'Обучаем другие команды CAD, коду и стратегии'},
+      {num:'04', title:'Направление FLL', text:'FIRST LEGO League: Innovation Project, Robot Game и Core Values'}
     ],
     bios: {
       Rasul:'Опытный ментор по CAD. Владеет 3D-моделированием в Fusion 360 и Onshape, принципами механической сборки, обучает этому другие команды.',
       Shyngys:'Главный программист команды. Пишет автономные режимы и системы управления на Java с использованием FTC SDK.',
       Kemenger:'Руководитель направления Inspire и капитан команды. Координирует ведение инженерного блокнота, презентации и работу с сообществом (outreach).',
-      Ali:'Специалист инженерного отдела. Отвечает за механическую конструкцию робота, прототипирование и тестовые испытания.'
+      Ali:'Специалист инженерного отдела. Отвечает за механическую конструкцию робота, прототипирование и тестовые испытания.',
+      Miras:'Project Mentor направления FLL. Направляет команды на этапах исследования, презентации и разработки решения в рамках Innovation Project.',
+      Yernur:'Ментор по программированию направления FLL. Учит писать код для Robot Game и автономных миссий на базе LEGO Spike/EV3.',
+      Alinur:'Инженер-ментор направления FLL. Помогает со сборкой робота, дизайном механизмов и доработкой насадок для выполнения миссий.'
     },
     res: [
       {title:'Дизайн робота', desc:'CAD моделирование, механика, принципы сборки', tag:'CAD / Design',
@@ -368,7 +383,11 @@ const translations = {
       {title:'Стратегия', desc:'Стратегия соревнований, выбор альянса, тактика', tag:'Strategy',
        full:'Стратегия соревнований важна не менее, чем сборка робота. Ключевые элементы:\n\n• Анализ игры — знание стоимости каждой задачи в очках и определение, какие задачи выгодны команде.\n\n• Выбор альянса (Alliance Selection) — при выборе партнёра на плей-офф важно искать команду, дополняющую ваши слабые стороны.\n\n• Скаутинг — наблюдение за возможностями роботов других команд и сбор данных для принятия решений при формировании альянса.\n\n• Коммуникация во время матча — использование чётких, коротких команд между драйверами и коучем (заранее согласованные сигналы).\n\n• Управление рисками — часто выгоднее отказаться от рискованного действия в пользу стабильного набора очков.\n\nХорошая стратегия — это пересечение возможностей робота и понимания игры командой.'},
       {title:'Правила и соревнования', desc:'Официальные правила FTC, сертификация, инспекция', tag:'Rules',
-       full:'Перед каждым соревнованием робот обязательно проходит техническую инспекцию (Robot Inspection). Основные требования:\n\n• Ограничения по размеру и весу — робот должен помещаться в установленный объём на старте.\n\n• Безопасность — проверяются острые углы, открытые провода, правильное крепление источника питания.\n\n• Батарея и электрическая система — должны использоваться только разрешённые батареи и контроллеры (Control Hub/Expansion Hub).\n\n• Сертификация software — команда должна использовать утверждённую версию FTC SDK.\n\nКроме того, на соревнованиях FTC есть раздел Judging — здесь оценивается инженерный блокнот команды, номинация на награду Inspire и командные ценности. Официальный свод правил (Game Manual Part 1 и 2) обязательно нужно внимательно изучить в начале каждого сезона.'}
+       full:'Перед каждым соревнованием робот обязательно проходит техническую инспекцию (Robot Inspection). Основные требования:\n\n• Ограничения по размеру и весу — робот должен помещаться в установленный объём на старте.\n\n• Безопасность — проверяются острые углы, открытые провода, правильное крепление источника питания.\n\n• Батарея и электрическая система — должны использоваться только разрешённые батареи и контроллеры (Control Hub/Expansion Hub).\n\n• Сертификация software — команда должна использовать утверждённую версию FTC SDK.\n\nКроме того, на соревнованиях FTC есть раздел Judging — здесь оценивается инженерный блокнот команды, номинация на награду Inspire и командные ценности. Официальный свод правил (Game Manual Part 1 и 2) обязательно нужно внимательно изучить в начале каждого сезона.'},
+      {title:'FLL: Innovation Project', desc:'Исследование, решение, презентация', tag:'FLL',
+       full:'Innovation Project в FIRST LEGO League — раздел, где команда находит реальную проблему и предлагает научно обоснованное решение. Этапы:\n\n1. Определение проблемы — выбор конкретной, близкой команде проблемы в рамках темы сезона (например, транспорт, изобретения, доставка еды).\n\n2. Исследование — интервью со специалистами, изучение научных источников, анализ существующих решений.\n\n3. Разработка решения — предложение инновационной, реализуемой идеи, создание прототипа.\n\n4. Презентация — 5-минутное выступление перед судьями, важны креативность и командная работа.\n\n5. Core Values — на протяжении всего процесса оцениваются принципы Discovery, Innovation, Impact, Inclusion, Teamwork, Fun.'},
+      {title:'FLL: Robot Game', desc:'LEGO Spike/EV3, миссии, набор очков', tag:'FLL',
+       full:'Robot Game — соревновательная часть FLL на базе LEGO Spike Prime или EV3. Основные понятия:\n\n• Миссии (Missions) — задания на поле, каждое даёт определённое количество очков.\n\n• Автономный режим — робот выполняет несколько миссий подряд без вмешательства человека за 2.5-минутный матч.\n\n• Насадки (Attachments) — создание дополнительных механизмов под каждую миссию — важная часть инженерных навыков.\n\n• Точность и повторяемость — правильная калибровка сенсоров (цвета, гироскопа) обеспечивает одинаковый результат при каждом заезде.\n\nСовет новичкам: не начинайте сразу со сложных миссий — освойте простое движение и одну-две миссии, затем постепенно усложняйте.'}
     ]
   },
   en: {
@@ -377,7 +396,7 @@ const translations = {
     welcome_title:'Welcome, Y-TECH!',
     welcome_text:'We are a team passionate about building innovative robots and developing engineering skills through FIRST Tech Challenge. Here you can reach our mentors, get advice from the AI mentor, and find useful resources.',
     about_title:'About the team',
-    about_text:"Y-TECH is team #29112, made up of young engineers and programmers competing in FIRST Tech Challenge. We are students from Esik Bilim Innovation Lyceum. Through the YSTEM project, we don't just build our own robot — we also mentor other beginner teams in CAD, programming, and strategy free of charge. Our goal is to grow STEM education through robotics and expand the FTC community in Kazakhstan.",
+    about_text:"Y-TECH is team #29112, made up of young engineers and programmers competing in FIRST Tech Challenge. We are students from Esik Bilim Innovation Lyceum. Through the YSTEM project, we don't just build our own robot — we also mentor other beginner teams in CAD, programming, and strategy free of charge. We also offer mentoring for FIRST LEGO League (FLL) — in the Innovation Project and Robot Game categories. Our goal is to grow STEM education through robotics and expand the FTC/FLL community in Kazakhstan.",
     about_stats:[
       {label:'Team', value:'Y-TECH #29112'},
       {label:'Project', value:'YSTEM'},
@@ -387,24 +406,29 @@ const translations = {
     ],
     mentors_eyebrow:'Team',
     ai_eyebrow:'AI Assistant',
-    ai_desc:'Ask anything about FTC — robot design, programming, strategy, or rules.',
+    ai_desc:'Ask anything about FTC and FLL — robot design, programming, strategy, the Innovation Project, or rules.',
     ai_placeholder:'Type your question...', ai_send:'Send',
-    ai_greeting:"Hi! I'm the Y-TECH team's AI mentor. Ask me anything about FTC.",
+    ai_greeting:"Hi! I'm the Y-TECH team's AI mentor. Ask me anything about FTC and FLL.",
     ai_typing:'Thinking',
     res_eyebrow:'Learning materials',
     res_click:'Read more →',
     role_cader:'Cader · CAD', role_prog:'Programmer', role_inspire:'Inspire/Captain', role_eng:'Engineer',
+    role_fll_project:'FLL Project · Mentor', role_fll_prog:'FLL Programming · Mentor', role_fll_eng:'FLL Engineer',
     tg:'Telegram',
     features: [
       {num:'01', title:'Building the robot', text:'CAD design, 3D printing, mechanical prototyping'},
       {num:'02', title:'Programming', text:'Autonomous and tele-op control built in Java'},
-      {num:'03', title:'Mentor network', text:'We teach CAD, code and strategy to other teams'}
+      {num:'03', title:'Mentor network', text:'We teach CAD, code and strategy to other teams'},
+      {num:'04', title:'FLL Program', text:'FIRST LEGO League: Innovation Project, Robot Game, and Core Values'}
     ],
     bios: {
       Rasul:'Experienced CAD mentor. Skilled in 3D modeling with Fusion 360 and Onshape and mechanical assembly principles, which he teaches to other teams.',
       Shyngys:"The team's lead programmer. Writes autonomous routines and control systems in Java using the FTC SDK.",
       Kemenger:'Leads the Inspire direction and captains the team. Coordinates the engineering notebook, presentations, and community outreach work.',
-      Ali:'Engineering department specialist. Responsible for the robot mechanical structure, prototyping, and test runs.'
+      Ali:'Engineering department specialist. Responsible for the robot mechanical structure, prototyping, and test runs.',
+      Miras:'FLL Project Mentor. Guides teams through the research, presentation, and solution-design stages of the Innovation Project.',
+      Yernur:'FLL Programming Mentor. Teaches Robot Game coding and autonomous missions using LEGO Spike/EV3.',
+      Alinur:'FLL Engineering Mentor. Helps with robot building, mechanism design, and attachment development for completing missions.'
     },
     res: [
       {title:'Robot design', desc:'CAD modeling, mechanics, build principles', tag:'CAD / Design',
@@ -414,7 +438,11 @@ const translations = {
       {title:'Strategy', desc:'Match strategy, alliance selection, tactics', tag:'Strategy',
        full:'Match strategy matters as much as the robot build. Key elements:\n\n• Game analysis — knowing the point value of each task and which ones are worth the team\'s time.\n\n• Alliance selection — when picking a partner for playoffs, look for a team that complements your weaknesses.\n\n• Scouting — tracking other teams\' robot capabilities and collecting data to make good alliance decisions.\n\n• In-match communication — using clear, short calls between drivers and the coach, agreed on in advance.\n\n• Risk management — it is often better to skip a risky action in favor of steady, reliable points.\n\nGood strategy is where robot capability meets the team\'s understanding of the game.'},
       {title:'Rules and competition', desc:'Official FTC rules, certification, inspection', tag:'Rules',
-       full:'Before every competition, a robot must pass technical Robot Inspection. Main requirements:\n\n• Size and weight limits — the robot must fit within the starting size constraint.\n\n• Safety — sharp edges, exposed wiring, and proper power source mounting are checked.\n\n• Battery and electrical system — only approved batteries and controllers (Control Hub/Expansion Hub) may be used.\n\n• Software certification — the team must run an approved version of the FTC SDK.\n\nFTC events also include Judging, where the team\'s engineering notebook, eligibility for the Inspire Award, and team values are assessed. Reading the official Game Manual Part 1 and 2 carefully at the start of every season is essential.'}
+       full:'Before every competition, a robot must pass technical Robot Inspection. Main requirements:\n\n• Size and weight limits — the robot must fit within the starting size constraint.\n\n• Safety — sharp edges, exposed wiring, and proper power source mounting are checked.\n\n• Battery and electrical system — only approved batteries and controllers (Control Hub/Expansion Hub) may be used.\n\n• Software certification — the team must run an approved version of the FTC SDK.\n\nFTC events also include Judging, where the team\'s engineering notebook, eligibility for the Inspire Award, and team values are assessed. Reading the official Game Manual Part 1 and 2 carefully at the start of every season is essential.'},
+      {title:'FLL: Innovation Project', desc:'Research, solution design, presentation', tag:'FLL',
+       full:"The Innovation Project in FIRST LEGO League is where a team identifies a real-world problem and proposes a research-based solution. Stages:\n\n1. Identify the problem — pick a specific, personally meaningful problem within the season's theme (e.g. transportation, invention, food delivery).\n\n2. Research — interview experts, study scientific sources, review existing solutions.\n\n3. Develop a solution — propose an innovative, workable idea and build a prototype.\n\n4. Present — a 5-minute presentation to judges; creativity and teamwork matter as much as the idea itself.\n\n5. Core Values — Discovery, Innovation, Impact, Inclusion, Teamwork, and Fun are evaluated throughout the whole process, not just the presentation."},
+      {title:'FLL: Robot Game', desc:'LEGO Spike/EV3, missions, scoring', tag:'FLL',
+       full:"Robot Game is the competitive robotics portion of FLL, built on LEGO Spike Prime or EV3. Key concepts:\n\n• Missions — tasks placed on the field, each worth a set number of points.\n\n• Autonomous runs — the robot completes several missions in sequence with no human control during a 2.5-minute match.\n\n• Attachments — building extra mechanisms for each mission is a core engineering skill.\n\n• Precision and repeatability — properly calibrating sensors (color, gyro) ensures the robot performs the same way on every run.\n\nTip for beginners: don't start with the hardest missions — master basic movement and one or two missions first, then add complexity gradually."}
     ]
   }
 };
@@ -423,7 +451,10 @@ const mentors = [
   { name:'Rasul', roleKey:'role_cader', tg:'mrgeniusmrv', photo:'assets/Rasul.png' },
   { name:'Shyngys', roleKey:'role_prog', tg:'Thefrosti', photo:'assets/China.png' },
   { name:'Kemenger', roleKey:'role_inspire', tg:'kema73', photo:'assets/kema.png' },
-  { name:'Ali', roleKey:'role_eng', tg:'rarree_21', photo:'assets/Ali.png' }
+  { name:'Ali', roleKey:'role_eng', tg:'rarree_21', photo:'assets/Ali.png' },
+  { name:'Miras', roleKey:'role_fll_project', tg:'Yerkinbek_Miras', photo:null },
+  { name:'Yernur', roleKey:'role_fll_prog', tg:'s1leeeem', photo:null },
+  { name:'Alinur', roleKey:'role_fll_eng', tg:'alinururur', photo:null }
 ];
 
 let currentLang = 'kk';
