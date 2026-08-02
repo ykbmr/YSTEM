@@ -1,4 +1,4 @@
-# Y-TECH | YSTEM #29112
+# YSTEM | Y-TECH #29112
 
 Official website for **Y-TECH**, a FIRST Tech Challenge (FTC) robotics team (project name **YSTEM**, team #29112), built by students of Esik Bilim Innovation Lyceum, Kazakhstan.
 
