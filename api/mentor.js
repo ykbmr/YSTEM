@@ -38,45 +38,70 @@ Be clear, encouraging, and specific. Prefer concrete steps and examples over vag
 This chat displays plain text only — never use Markdown syntax (no **bold**, no #headers, no bullet symbols like * or -). Write in plain sentences, and for lists use simple numbered lines like "1) ..." on their own line.
 If a question is unrelated to FTC/robotics/engineering, you can still help, but gently steer back toward how it might relate to their robotics work when relevant.`;
 
-  try {
-    const response = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-goog-api-key': apiKey
-        },
-        body: JSON.stringify({
-          system_instruction: { parts: [{ text: systemPrompt }] },
-          contents: [
-            { role: 'user', parts: [{ text: message.trim() }] }
-          ],
-          generationConfig: {
-            maxOutputTokens: 2048,
-            thinkingConfig: { thinkingLevel: 'low' }
-          }
-        })
-      }
-    );
+  const requestBody = {
+    system_instruction: { parts: [{ text: systemPrompt }] },
+    contents: [
+      { role: 'user', parts: [{ text: message.trim() }] }
+    ],
+    generationConfig: {
+      maxOutputTokens: 2048,
+      thinkingConfig: { thinkingLevel: 'low' }
+    }
+  };
 
-    if (!response.ok) {
-      const errText = await response.text();
-      console.error('Gemini API error:', response.status, errText);
-      res.status(502).json({ error: 'AI provider error', detail: errText });
-      return;
+  // Try the primary model first; if it's overloaded, fall back to Flash-Lite.
+  // Each model gets a couple of quick retries for transient 503/429 errors.
+  const modelsToTry = ['gemini-3.6-flash', 'gemini-3.5-flash-lite'];
+  const maxRetriesPerModel = 2;
+
+  let lastErrStatus = null;
+  let lastErrText = null;
+
+  try {
+    for (const model of modelsToTry) {
+      for (let attempt = 0; attempt <= maxRetriesPerModel; attempt++) {
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-goog-api-key': apiKey
+            },
+            body: JSON.stringify(requestBody)
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          const parts = data?.candidates?.[0]?.content?.parts || [];
+          const reply = parts
+            .filter(p => !p.thought && p.text)
+            .map(p => p.text)
+            .join('')
+            .trim()
+            || 'Кешіріңіз, жауап ала алмадым. Қайталап көріңізші.';
+
+          res.status(200).json({ reply });
+          return;
+        }
+
+        lastErrStatus = response.status;
+        lastErrText = await response.text();
+        console.error(`Gemini API error (model=${model}, attempt=${attempt}):`, lastErrStatus, lastErrText);
+
+        // Only retry on transient errors (overloaded / rate limited)
+        const isTransient = response.status === 503 || response.status === 429;
+        if (!isTransient) break; // move on to next model (or fail) immediately
+
+        if (attempt < maxRetriesPerModel) {
+          await new Promise(r => setTimeout(r, 500 * (attempt + 1))); // simple backoff
+        }
+      }
     }
 
-    const data = await response.json();
-    const parts = data?.candidates?.[0]?.content?.parts || [];
-    const reply = parts
-      .filter(p => !p.thought && p.text)
-      .map(p => p.text)
-      .join('')
-      .trim()
-      || 'Кешіріңіз, жауап ала алмадым. Қайталап көріңізші.';
-
-    res.status(200).json({ reply });
+    // All models/retries exhausted
+    res.status(502).json({ error: 'AI provider error', detail: lastErrText || ('HTTP ' + lastErrStatus) });
   } catch (err) {
     console.error('Mentor API error:', err);
     res.status(500).json({ error: 'Internal server error' });
