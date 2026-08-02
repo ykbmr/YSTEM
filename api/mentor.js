@@ -53,8 +53,8 @@ If a question is unrelated to FTC/robotics/engineering, you can still help, but 
             { role: 'user', parts: [{ text: message.trim() }] }
           ],
           generationConfig: {
-            maxOutputTokens: 1024,
-            thinkingConfig: { thinkingBudget: 0 }
+            maxOutputTokens: 2048,
+            thinkingConfig: { thinkingLevel: 'low' }
           }
         })
       }
